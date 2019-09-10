@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'header.html' %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Tareas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-xs-12 mx-auto" style="text-align: center">
+                {% include 'alert.html' %}
+                <table class="table" style="text-align: center">
+                    <thead class="table-dark">
+                        <tr>
+
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dato in datos %}
+                        <tr>
+                            <td>{{ dato.nombre }}</td>
+                            <td>{{ dato.apellido }}</td>
+                            <td>{{ dato.edad }}</td>
+                            <td>
+                                <a href="eliminar/{{ dato.id }}" class="btn btn-danger">Eliminar</a>
+                                <a href="actualizar/{{ dato.id }}" class="btn btn-warning">actualizar</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <h1>No hay datos</h1>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/guardar"><input type="button" value="Guardar datos" class="btn btn-success"></a>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
